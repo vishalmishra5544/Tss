@@ -1,0 +1,135 @@
+Types of search:
+1)linear search
+2)linear search with sentinel value
+3)binary search
+4)interpolation search 
+5)robust interpolation search
+6)index sequential search
+
+->equals and hashcode
+
+//s4:
+q1)Capacity,currentlyBooked,DisplayFlightById(),BookTicket(flightId,..),cancelTicket()
+//s5:
+->singleton class,factory method,private constructor,static constructor.
+
+
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+namespace Exp305
+{
+ class User
+ {
+   public String Name{get;set;}
+   public long PhoneNo{get;set;}
+   public User(String Name,long phone)
+   {
+     this.Name=Name;
+     this.PhoneNo=phone;
+   } 
+  public string ToString()
+  {
+    return "("+"Name: "+Name+" ,PhoneNo: "+PhoneNo+")"; 
+  }
+ }
+ class Directory
+ {
+   SortedList<string,long> l;
+   public Directory()
+   {
+   l=new SortedList<string,long>();
+   }
+   public void AddNewPair()
+   {
+    Console.WriteLine("Enter User Name:");
+    String u=Console.ReadLine();
+    Console.WriteLine("Enter User mobile no:");
+    long n=Convert.ToInt64(Console.ReadLine());
+    User temp=new User(u,n);
+    l.Add(temp.Name,temp.PhoneNo);
+   }
+   public void DisplayMobileUsingName()
+   {
+       Console.WriteLine("Enter User Name:");
+       String u=Console.ReadLine();
+       if(l.ContainsKey(u))
+       {
+           Console.WriteLine("User Name:"+u+"Phone No:"+l[u]);
+       }else 
+          Console.WriteLine("No such user found!!");
+   }
+   public void RemoveWithKey()
+   {
+       Console.WriteLine("Enter User Name:");
+       String u=Console.ReadLine();
+       if(l.ContainsKey(u))
+       {
+           Console.WriteLine("Removed User Name:"+u+"Phone No:"+l[u]);
+           l.Remove(u);
+       }else 
+          Console.WriteLine("No such user found!!");  
+   }
+   public void SearchMobileNumber()
+   {
+        Console.WriteLine("Enter User Phone No:");
+        long  u=Convert.ToInt64(Console.ReadLine());
+       if(l.ContainsValue(u))
+       {
+           int ind=l.IndexOfValue(u);
+           Console.WriteLine("User Name:"+l.GetByIndex(ind)+"Phone No:"+l[u]);
+           l.Remove(u);
+       }else 
+          Console.WriteLine("No such user found!!"); 
+   }
+   public void DisplayAllPairs()
+   {
+        foreach (KeyValuePair<string, long> item in l)
+        {
+            Console.WriteLine($"Key: { item.Key}, Value: { item.Value}");
+        }
+   }
+ }
+ class Program
+ {
+   public static void Main(String[] args)
+   {
+       Directory d=new Directory();
+     while(true)
+     {
+         Console.WriteLine("Enter your choice from following:\n1)Add New Pair\n2)Display Mobile Using Name\n3)Remove With Key\n4)Search Mobile Number\n5)Display All Pairs\n6)Exit\n");
+         int choice=Convert.ToInt32(Console.ReadLine());
+         if(choice==6) return;
+         switch(choice)
+         {
+             case 1:
+                   d.AddNewPair();
+                   break;
+             case 2:
+                   d.DisplayMobileUsingName();
+                   break;
+             case 3:
+                   d.RemoveWithKey();
+                   break;
+             case 4:
+                  d.SearchMobileNumber();
+                  break;
+             case 5:
+                   d.DisplayAllPairs();
+                   break;
+             default:
+                Console.WriteLine("Enter a valid Choice!");
+                break;
+         }
+     }
+   }
+ }
+
+}
+
+
+
