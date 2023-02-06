@@ -1,0 +1,113 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
+
+using System;
+using System.Collections.Generic;
+namespace Exp501
+{
+    class Transaction
+    {
+        internal static tcount;
+        private int _tId,_ano,_amt;
+        private string _type,_tDate;
+        public int TId
+        {
+            get{return _tId;}
+            set{_tId=value;}
+        }
+        public int AcNo
+        {
+            get{return _ano;}
+            set{_ano=value;}
+        }
+         public int Amt
+        {
+            get{return _amt;}
+            set{_amt=value;}
+        }
+         public string Type
+        {
+            get{return _type;}
+            set{_type=value;}
+        }
+         public string TDate
+        {
+            get{return _tDate;}
+            set{_tDate=value;}
+        }
+        public Transaction(int ano,int amt,string type,string date)
+        {
+            _ano=ano;
+            _amt=amt;
+            _type=type;
+            _tDate=date;
+        }
+        
+    }
+    class TransactionRepo
+    {
+        private List<Transaction> l;
+        public TransactionRepo()
+        {
+            l=new List<Transaction>();
+        }
+        public void AddNewTransaction()
+        {
+            Console.WriteLine("Enter Account No:");
+            int ano=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Amount:");
+            int amt=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Transaction Type:");
+            string ty=Console.ReadLine();
+            Console.WriteLine("Enter date:");
+            string dt=Console.ReadLine();
+            Transaction temp=new Transaction(ano,amt,ty,dt);
+            temp.tid=temp.count++;
+            l.Add(temp);
+            Console.WriteLine("Transaction Added!");
+        }
+        public void DeleteTransaction()
+        {
+            Console.WriteLine("Enter Account No:");
+            int ano=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Transaction Id:");
+            int id=Convert.ToInt32(Console.ReadLine()); 
+            int index=0;
+            foreach(Transaction ele in l)
+            {
+                if(ele.AcNo==ano&&ele.TId==id)
+                {
+                    l.Remove(index);
+                    Console.WriteLine("Transaction Deleted!");
+                    return;
+                }
+                index++;
+            }
+            Console.WriteLine("No such transaction found!!");
+        }
+        public void DisplayAllTransactionsWithDateRange()
+        {
+            Console.WriteLine("Enter start date:");
+            string sd=Console.ReadLine();
+            Console.WriteLine("Enter end date:");
+            string ed=Console.ReadLine();
+            foreach(Transaction ele in l)
+            {
+                if(ele.TDate)
+            }
+        }
+        public void AddNewTransaction()
+        {
+            
+        }
+    }
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Transaction t=new Transaction();
+            t.TID=1;
+            Console.WriteLine ("Hello Mono World"+t.TID);
+        }
+    }
+}
